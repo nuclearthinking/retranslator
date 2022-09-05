@@ -3,7 +3,7 @@ import io
 import aiohttp
 from discord import File, Webhook
 
-from retranslator.settings import settings
+from settings import settings
 
 
 async def send_photo(

@@ -2,7 +2,7 @@ import logging
 
 import click
 
-from retranslator import telegram
+import telegram
 
 logging.basicConfig(
     level=logging.INFO,

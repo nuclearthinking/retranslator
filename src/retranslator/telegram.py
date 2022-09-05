@@ -5,8 +5,8 @@ from aiogram import Bot, Dispatcher, executor, types
 from aiogram.dispatcher.filters import BoundFilter
 from aiogram.types import ContentType
 
-from retranslator import discord_sender
-from retranslator.settings import settings
+import discord_sender
+from settings import settings
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s : %(levelname)s | %(name)s - %(message)s"

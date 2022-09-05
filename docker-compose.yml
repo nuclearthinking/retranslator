@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  retranslator:
+    image: nuclearthinking/retranslator
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      DISCORD_TOKEN : token
+      DISCORD_WEBHOOK: url
+      DISCORD_WEBHOOK_ANNOUNCE: url
+      TELEGRAM_TOKEN: token
+      

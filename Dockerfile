@@ -19,4 +19,4 @@ RUN poetry config virtualenvs.create false \
 
 COPY . /app
 
-CMD ["poetry", "run", "retranslator", "start"]
+CMD ["python", "src/retranslator/app.py", "start"]
