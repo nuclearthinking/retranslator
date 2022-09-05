@@ -25,8 +25,8 @@ video_content = [ContentType.VIDEO, ContentType.VIDEO_NOTE]
 announce_emoji = ["🔜", "💜", "❤"]
 
 
-def is_announce_message(text: str) -> bool:
-    return any(emoji in text for emoji in announce_emoji)
+def is_announce_message(text: str = None) -> bool:
+    return any(emoji in text for emoji in announce_emoji) if text else False
 
 
 class ChannelFilter(BoundFilter):
@@ -43,11 +43,10 @@ class ChannelFilter(BoundFilter):
             message.sender_chat.id,
             message.sender_chat.title,
         )
-        # return message.sender_chat.id in self.channel_ids
-        return True
+        return message.sender_chat.id in self.channel_ids
 
 
-channel_white_list_filter = ChannelFilter(channel_id=[-1001775379988])
+channel_white_list_filter = ChannelFilter(channel_id=[-1001775379988, -1001568491590])
 
 
 @dp.channel_post_handler(channel_white_list_filter, content_types=media_content)
