@@ -79,7 +79,7 @@ async def handle_message(message: types.Message):
 
 @dp.channel_post_handler(channel_white_list_filter, content_types=video_content)
 async def handle_video_message(message: types.Message):
-    text = f"Новое видео в телеграм канале Shenty\n{message.url}"
+    text = f"Новое видео в телеграм канале\n{message.url}"
     await discord_sender.send_text(text=text)
 
 
