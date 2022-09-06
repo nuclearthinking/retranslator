@@ -70,9 +70,7 @@ async def handle_photo_message(message: types.Message):
 async def handle_message(message: types.Message):
     if is_announce_message(message.text):
         message_text = f"{message.text} @everyone\n{message.url}"
-        await discord_sender.send_announce(
-            message=message_text,
-        )
+        await discord_sender.send_announce(message=message_text)
         return
     await discord_sender.send_text(text=f"{message.text}\n{message.url}")
 
