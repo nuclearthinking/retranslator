@@ -1,11 +1,10 @@
 import io
 import logging
 
+import discord_sender
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.dispatcher.filters import BoundFilter
 from aiogram.types import ContentType
-
-import discord_sender
 from settings import settings
 
 logging.basicConfig(
@@ -56,9 +55,10 @@ async def handle_photo_message(message: types.Message):
     file = io.BytesIO()
     await message.photo[-1].download(destination_file=file)
     if is_announce_message(message.caption):
+        message_text = f"{message.caption} @everyone\n {message.url}"
         await discord_sender.send_announce(
             photo=file,
-            message=f"{message.caption}\n{message.url}",
+            message=message_text,
         )
         return
     await discord_sender.send_photo(
@@ -69,8 +69,9 @@ async def handle_photo_message(message: types.Message):
 @dp.channel_post_handler(channel_white_list_filter, content_types=text_content)
 async def handle_message(message: types.Message):
     if is_announce_message(message.text):
+        message_text = f"{message.text} @everyone\n{message.url}"
         await discord_sender.send_announce(
-            message=f"{message.text}\n{message.url}",
+            message=message_text,
         )
         return
     await discord_sender.send_text(text=f"{message.text}\n{message.url}")
