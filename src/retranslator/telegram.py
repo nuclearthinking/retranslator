@@ -55,14 +55,15 @@ async def handle_photo_message(message: types.Message):
     file = io.BytesIO()
     await message.photo[-1].download(destination_file=file)
     if is_announce_message(message.caption):
-        message_text = f"{message.caption} @everyone\n {message.url}"
+        message_text = f"{message.caption} @everyone\n{message.url}"
         await discord_sender.send_announce(
             photo=file,
             message=message_text,
         )
         return
+    message = f'{message.caption}\n{message.url}' if message.caption else message.url
     await discord_sender.send_photo(
-        photo=file, file_name=file_name, message=f"{message.url}"
+        photo=file, file_name=file_name, message=message
     )
 
 
