@@ -1,8 +1,10 @@
 import logging
 
 import click
-import telegram
+import sentry_sdk
 
+import telegram
+from settings import  settings
 logging.basicConfig(
     level=logging.INFO,
 )
@@ -11,7 +13,10 @@ logger = logging.getLogger(__name__)
 
 @click.group()
 def cli():
-    pass
+    sentry_sdk.init(
+        dsn=settings.SENTRY_DSN,
+        traces_sample_rate=0,
+    )
 
 
 @cli.command()

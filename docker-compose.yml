@@ -11,4 +11,5 @@ services:
       DISCORD_WEBHOOK: url
       DISCORD_WEBHOOK_ANNOUNCE: url
       TELEGRAM_TOKEN: token
+      SENTRY_DSN: url
       
