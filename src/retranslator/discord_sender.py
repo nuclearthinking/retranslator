@@ -43,7 +43,7 @@ async def send_announce(message: str, photo: io.BytesIO = None) -> None:
     async with aiohttp.ClientSession() as session:
         img = File(fp=photo, filename="img.jpg") if photo else None
         hook = Webhook.from_url(
-            url=settings.DISCORD_WEBHOOK,
+            url=settings.DISCORD_WEBHOOK_ANNOUNCE,
             bot_token=settings.DISCORD_TOKEN,
             session=session,
         )
