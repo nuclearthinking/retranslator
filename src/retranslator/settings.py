@@ -7,6 +7,6 @@ class Settings(BaseSettings):
     DISCORD_WEBHOOK_ANNOUNCE: str
     DISCORD_TOKEN: str
     SENTRY_DSN: str 
-    CHANNEL_URl: str = "https://t.me/shenty_live"
+    CHANNEL_URl: str = "https://t.me/shentyshmenty"
 
 settings = Settings()
